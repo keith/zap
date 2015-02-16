@@ -38,17 +38,22 @@ elif [[ $# -gt 1 ]]; then
 fi
 
 app="$1"
-if [[ ! -d $app ]]; then
-  app="/Applications/${app%.app}.app"
+app_path="$app"
+if [[ ! -d $app_path ]]; then
+  app_path="/Applications/${app%.app}.app"
 
-  if [[ ! -d $app ]]; then
-    echo "Application path must be absolute or be in /Applications"
+  if [[ ! -d $app_path ]]; then
+    app_path="$HOME/Applications/${app%.app}.app"
+  fi
+
+  if [[ ! -d $app_path ]]; then
+    echo "Application path must be absolute or in /Applications or $HOME/Applications"
     exit 1
   fi
 fi
 
-if [[ ! -w $app ]]; then
-  echo "$app cannot be deleted. Try running this again with 'sudo'"
+if [[ ! -w $app_path ]]; then
+  echo "$app_path cannot be deleted. Try running this again with 'sudo'"
   exit 1
 fi
 
@@ -64,15 +69,15 @@ if [[ -z "$identifier" ]]; then
   exit 1
 fi
 
-appname=$(basename "${app%.*}")
-pkill -f "$app" || true
-lines=$(pgrep -f "$(echo "$app" | sed -E 's/(.)/[\1]/')" | wc -l | xargs || true)
+appname=$(basename "${app_path%.*}")
+pkill -f "$app_path" || true
+lines=$(pgrep -f "$(echo "$app_path" | sed -E 's/(.)/[\1]/')" | wc -l | xargs || true)
 if [[ $lines -gt 0 ]]; then
   echo "Please quit $appname and try again"
   exit 1
 fi
 
-remove "$app"
+remove "$app_path"
 remove "$HOME/Library/Application Support/$appname"
 remove "$HOME/Library/Application Support/$identifier"
 remove "$HOME/Library/Containers/$identifier"
