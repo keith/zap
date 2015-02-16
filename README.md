@@ -3,7 +3,7 @@
 A simple command line tool to remove a `.app` on OS X and its related
 files.
 
-Think [AppZapper](http://www.appzapper.com) with a CLI.
+Think [AppZapper](http://www.appzapper.com) from the command line.
 
 ## Usage
 
