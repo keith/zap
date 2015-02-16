@@ -80,7 +80,7 @@ fi
 remove "$app_path"
 remove "$HOME/Library/Application Support/$appname"
 remove "$HOME/Library/Application Support/$identifier"
-remove "$HOME/Library/Containers/$identifier"
+remove "$HOME/Library/Containers/$identifier"*
 remove "$HOME/Library/Caches/$appname"
 remove "$HOME/Library/Caches/$identifier"
 remove "$HOME/Library/$appname"
