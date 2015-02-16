@@ -28,10 +28,16 @@ zap -s foo.app
 
 ### Installation
 
+With [Homebrew](http://brew.sh)
+
 ```sh
 brew tap Keithbsmiley/formulae
 brew install zap
 ```
+
+Without Homebrew just copy `zap` to somewhere in your `$PATH`. If you
+would also like the zsh completions copy `_zap` to somewhere in your
+`$fpath`.
 
 #### Disclaimer
 
