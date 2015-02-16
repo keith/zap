@@ -1,0 +1,10 @@
+#compdef zap
+
+_zap() {
+  _files -W "/Applications" -g "*.app"
+  _files -W "$HOME/Applications" -g "*.app"
+}
+
+_zap
+
+# vim:ft=zsh:ts=2
