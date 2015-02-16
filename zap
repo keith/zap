@@ -17,7 +17,7 @@ function remove()
     if [[ -e $path ]]; then
       read -p "Remove $path? " -r
       if [[ $REPLY =~ ^[Yy]$ ]]; then
-        $cmd -r $path
+        $cmd -r "$path"
       fi
     fi
   done
@@ -57,7 +57,7 @@ if [[ ! -w $app_path ]]; then
   exit 1
 fi
 
-plist_path="${app%/}$info_plist"
+plist_path="${app_path%/}$info_plist"
 if [[ ! -f $plist_path ]]; then
   echo "No plist at $plist_path"
   exit 1
