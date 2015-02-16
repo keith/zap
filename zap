@@ -10,7 +10,10 @@ function usage()
 
 function remove()
 {
-  echo "$cmd -ri $1"
+  path=$1
+  if [[ -e $path ]]; then
+    echo "$cmd -ri $1"
+  fi
 }
 
 if [[ $# -lt 1 ]]; then
@@ -43,5 +46,12 @@ if [[ ! -f $plist_path ]]; then
   exit 1
 fi
 
-identifier=$($plist -c "print :CFBundleIdentifier" "$plist_path")
+appname=$(basename "${app%.*}")
+echo "$appname"
+echo "$plist_path"
+identifier=$($plist -c "print CFBundleIdentifier" "$plist_path")
+echo "$idenitifer"
 remove "$app"
+remove "~/Library/Application Support/$appname"
+remove "~/Library/Application Support/$identifier"
+remove "~/Containers/$identifier"
