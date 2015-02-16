@@ -5,6 +5,8 @@ files.
 
 Think [AppZapper](http://www.appzapper.com) from the command line.
 
+**Zap asks you for permission before deleting each file**
+
 ## Usage
 
 To delete an application in `/Applications` or `~/Applications`
