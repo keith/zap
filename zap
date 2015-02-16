@@ -15,7 +15,10 @@ function remove()
   for path in "${paths[@]}"
   do
     if [[ -e $path ]]; then
-      echo "$cmd -ri $path"
+      read -p "Remove $path? " -r
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        $cmd -r $path
+      fi
     fi
   done
 }
