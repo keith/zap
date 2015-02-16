@@ -1,6 +1,38 @@
 # zap
 
-A simple command line tool to remove a `.app` on OS X and all its
-related files.
+A simple command line tool to remove a `.app` on OS X and its related
+files.
 
 Think [AppZapper](http://www.appzapper.com) with a CLI.
+
+## Usage
+
+To delete an application in `/Applications` or `~/Applications`
+
+```sh
+zap foo.app
+```
+
+To delete a specific application:
+
+```sh
+zap /path/foo.app
+```
+
+To delete an application securely use `-s` (this must come before the
+application):
+
+```sh
+zap -s foo.app
+```
+
+### Installation
+
+```sh
+brew tap Keithbsmiley/formulae
+brew install zap
+```
+
+#### Disclaimer
+
+This CLI deletes stuff. If it deletes the wrong stuff it isn't my fault.
