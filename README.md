@@ -1,7 +1,7 @@
 # zap
 
-A simple command line tool to remove a `.app` on OS X and its related
-files.
+A simple command line tool to remove a `.app` on OS X and its [related
+files](https://github.com/Keithbsmiley/zap/blob/master/zap#L80-90).
 
 Think [AppZapper](http://www.appzapper.com) from the command line.
 
