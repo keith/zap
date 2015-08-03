@@ -1,7 +1,7 @@
 # zap
 
 A simple command line tool to remove a `.app` on OS X and its [related
-files](https://github.com/Keithbsmiley/zap/blob/master/zap#L80-90).
+files](https://github.com/keith/zap/blob/master/zap#L80-90).
 
 Think [AppZapper](http://www.appzapper.com) from the command line.
 
@@ -33,7 +33,7 @@ zap -s foo.app
 With [Homebrew](http://brew.sh)
 
 ```sh
-brew tap Keithbsmiley/formulae
+brew tap keith/formulae
 brew install zap
 ```
 
