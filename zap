@@ -18,6 +18,8 @@ function remove()
       read -p "Remove $path? " -r
       if [[ $REPLY =~ ^[Yy]$ ]]; then
         $cmd -r "$path"
+      elif [[ ! $REPLY =~ ^[Nn]$ ]]; then
+        remove "$path"
       fi
     fi
   done
