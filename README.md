@@ -33,8 +33,7 @@ zap -s foo.app
 With [Homebrew](http://brew.sh)
 
 ```sh
-brew tap keith/formulae
-brew install zap
+brew install keith/formulae/zap
 ```
 
 Without Homebrew just copy `zap` to somewhere in your `$PATH`. If you
