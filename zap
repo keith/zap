@@ -4,9 +4,11 @@ set -euo pipefail
 
 function usage()
 {
-  echo "Usage: zap [appname]"
+  echo "Usage: zap [-y] [appname]"
   exit 1
 }
+
+auto_confirm=0
 
 function remove()
 {
@@ -14,6 +16,12 @@ function remove()
   for path in "${paths[@]}"
   do
     if [[ -e $path ]]; then
+      if [[ "$auto_confirm" == 1 ]]; then
+        echo "Removing $path"
+        rm -r "$path"
+        return
+      fi
+
       read -p "Remove $path? " -r
       if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -r "$path"
@@ -30,7 +38,10 @@ fi
 
 plist="/usr/libexec/PlistBuddy"
 info_plist="/Contents/Info.plist"
-if [[ $# -gt 1 ]]; then
+if [[ $1 == "-y" ]]; then
+  auto_confirm=1
+  shift
+elif [[ $# -gt 1 ]]; then
   usage
 fi
 
