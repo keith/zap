@@ -1,11 +1,10 @@
 #!/bin/bash
 
-set -e
-set -o pipefail
+set -euo pipefail
 
 function usage()
 {
-  echo "Usage: zap [-s] [appname]"
+  echo "Usage: zap [appname]"
   exit 1
 }
 
@@ -17,7 +16,7 @@ function remove()
     if [[ -e $path ]]; then
       read -p "Remove $path? " -r
       if [[ $REPLY =~ ^[Yy]$ ]]; then
-        $cmd -r "$path"
+        rm -r "$path"
       elif [[ ! $REPLY =~ ^[Nn]$ ]]; then
         remove "$path"
       fi
@@ -29,13 +28,9 @@ if [[ $# -lt 1 ]]; then
   usage
 fi
 
-cmd="rm"
 plist="/usr/libexec/PlistBuddy"
 info_plist="/Contents/Info.plist"
-if [[ $1 == "-s" ]]; then
-  cmd="srm"
-  shift
-elif [[ $# -gt 1 ]]; then
+if [[ $# -gt 1 ]]; then
   usage
 fi
 
