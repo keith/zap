@@ -60,9 +60,11 @@ if [[ ! -d $app_path ]]; then
   fi
 fi
 
-if [[ ! -w $app_path ]]; then
-  echo "$app_path cannot be deleted. Try running this again with 'sudo'"
-  exit 1
+if (( EUID != 0 )); then
+  if [[ ! -w $app_path ]]; then
+    echo "$app_path cannot be deleted. Try running this again with 'sudo'"
+    exit 1
+  fi
 fi
 
 plist_path="${app_path%/}$info_plist"
